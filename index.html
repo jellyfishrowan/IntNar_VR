@@ -161,12 +161,13 @@
 
     <footer>
       <footerNav>
-        <button type="button" onclick="changeClue('assets/david.obj')">         Clue 1</button>
-        <button type="button" onclick="changeClue('assets/whiteboard.obj')">    Clue 2</button>
-        <button type="button" onclick="changeClue('assets/wet-floor-sign.obj')">Clue 3</button>
-        <button type="button" onclick="changeClue('assets/stapler.obj')">       Clue 4</button>
-        <button type="button" onclick="changeClue('assets/sandwich.obj')">      Clue 5</button>
-        <button type="button" onclick="changeClue('assets/coffee-tray.obj')">   Clue 6</button>
+        <!-- the model that loads will always be the first button as long as it has the onclick function -->
+        <!-- <button type="button" onclick="changeClue('assets/david.obj')">         Clue 1</button> -->
+        <button type="button" onclick="changeClue('assets/whiteboard.obj')">    Clue 1</button>
+        <button type="button" onclick="changeClue('assets/wet-floor-sign.obj')">Clue 2</button>
+        <button type="button" onclick="changeClue('assets/stapler.obj')">       Clue 3</button>
+        <button type="button" onclick="changeClue('assets/sandwich.obj')">      Clue 4</button>
+        <button type="button" onclick="changeClue('assets/coffee-tray.obj')">   Clue 5</button>
       </footerNav>
     </footer>
 
@@ -198,7 +199,8 @@
 
       /* ---------- Define Actions and dependancies ---------- */
           preload = () => {
-              displayObject = loadModel('assets/david.obj', true);// replace path with new object's path
+              document.getElementsByTagName('button')[0].click();
+              // displayObject = loadModel('assets/david.obj', true);// replace path with new object's path
               //texture = loadImage();// haven't worked with this before so it might need some tweaking
               //displayObjectTexture = loadImage('img/asset4.png');
           }
