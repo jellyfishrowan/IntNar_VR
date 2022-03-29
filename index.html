@@ -43,9 +43,10 @@
         position: absolute;
         left: 10vw; top: 10vh;
         width: 80vw; height: 80vh;
-        background-color: rgba(255, 0, 0, 0.5);
+        /* background-color: rgba(255, 0, 0, 0.5); */
         display: block;
         /* overflow: hidden; */
+        cursor: grab;
       }
 
 
@@ -186,7 +187,7 @@
 
     <!--  -->
 
-    <modelDisplay id="modelDisplay"></modelDisplay>
+    <modelDisplay id="modelDisplay" onmousedown="startDrag()"></modelDisplay>
 
     <footer>
       <footerNav>
@@ -245,7 +246,7 @@
           var horizontalRotation = Math.PI;
           var cameraZoom;
 
-          var mouseIsPressed = false;
+          var mouseIsDown = false;
           var previousMousePositionX, previousMousePositionY;
           var mouseChangeX, mouseChangeY;
 
@@ -275,7 +276,7 @@
               ambientLight(25);
               ambientMaterial(255, 255, 255);
 
-              if(mouseIsPressed){
+              if(mouseIsDown){
                 // console.log("X(" + mouseX + "), Y(" + mouseY + ")");
                 if(previousMousePositionX != mouseX || previousMousePositionY != mouseY){
                   mouseChangeX = mouseX - previousMousePositionX;
@@ -314,14 +315,19 @@
             // let safeAreaStartX = 
             // console.log((width * 0.1) + " / " + mouseX + " / " + (width * 0.9));
             // if(mouseX > (width * 0.1) && mouseX < (width * 0.9) && mouseY > (height * 0.1) && mouseY < (height * 0.9)){
-              previousMousePositionX = mouseX;
-              previousMousePositionY = mouseY;
-              mouseIsPressed = true;
+
             // }
           }
+
+          function startDrag(){
+            previousMousePositionX = mouseX;
+            previousMousePositionY = mouseY;
+            mouseIsDown = true;
+          }
+
           function mouseReleased(){
             // console.log("X(" + mouseX + "), Y(" + mouseY + ")");
-            mouseIsPressed = false;
+            mouseIsDown = false;
             previousMousePositionX = null;
             previousMousePositionY = null;
             mouseChangeX = null;
